@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "7b2f8b2b-0cdb-401f-ac34-afdb11376149",
+		"name": "天气预报接口测试",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "city=成都",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7cfb39b7-34fa-464d-89f3-8ce5b7806c77",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"chengdu\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://tianqiapi.com/api?version=v61&appid={{APPID}}&appsecret={{APPSecret}}&city=成都",
+					"protocol": "https",
+					"host": [
+						"tianqiapi",
+						"com"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "version",
+							"value": "v61"
+						},
+						{
+							"key": "appid",
+							"value": "{{APPID}}"
+						},
+						{
+							"key": "appsecret",
+							"value": "{{APPSecret}}"
+						},
+						{
+							"key": "city",
+							"value": "成都"
+						}
+					]
+				},
+				"description": "city = 成都"
+			},
+			"response": []
+		},
+		{
+			"name": "cityID=101270101",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1342a09f-8bb3-478f-88e4-c8af450ce9bf",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"101270101\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "value",
+							"value": "9vDdgzFc",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "42741825",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://tianqiapi.com/api?cityid=101270101&appid={{APPID}}&appsecret={{APPSecret}}",
+					"protocol": "https",
+					"host": [
+						"tianqiapi",
+						"com"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "cityid",
+							"value": "101270101"
+						},
+						{
+							"key": "appid",
+							"value": "{{APPID}}"
+						},
+						{
+							"key": "appsecret",
+							"value": "{{APPSecret}}"
+						}
+					]
+				},
+				"description": "城市ID"
+			},
+			"response": []
+		},
+		{
+			"name": "组合测试-内江",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://tianqiapi.com/api?appid={{APPID}}&appsecret={{APPSecret}}&cityid=101271201&city=内江&ip=112.192.13.129",
+					"protocol": "https",
+					"host": [
+						"tianqiapi",
+						"com"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "{{APPID}}"
+						},
+						{
+							"key": "appsecret",
+							"value": "{{APPSecret}}"
+						},
+						{
+							"key": "cityid",
+							"value": "101271201"
+						},
+						{
+							"key": "city",
+							"value": "内江"
+						},
+						{
+							"key": "ip",
+							"value": "112.192.13.129"
+						}
+					]
+				},
+				"description": "内江 cityID 城市IP"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
